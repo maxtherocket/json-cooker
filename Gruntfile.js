@@ -34,7 +34,7 @@ module.exports = function(grunt) {
         options: {
         },
         files: {
-          'tmp/default_options': ['test/fixtures/testing', 'test/fixtures/123'],
+          'tmp/json.json': 'test/fixtures/json.raw',
         },
       },
       custom_options: {
@@ -68,6 +68,6 @@ module.exports = function(grunt) {
   grunt.registerTask('test', ['clean', 'json_cooker', 'nodeunit']);
 
   // By default, lint and run all tests.
-  grunt.registerTask('default', ['jshint', 'test']);
+  grunt.registerTask('default', ['test']);
 
 };

@@ -1,0 +1,3 @@
+{
+	"potatoes":{{include:test/fixtures/potatoes.json}} {{include:test/fixtures/potatoess.json}}
+}
