@@ -13,7 +13,7 @@ module.exports = function(grunt) {
   // Please see the Grunt documentation for more information regarding task
   // creation: http://gruntjs.com/creating-tasks
 
-  grunt.registerMultiTask('json_cooker', 'Cooking', function() {
+  grunt.registerMultiTask('cook', 'Cooking', function() {
     // Merge task-specific and/or target-specific options with these defaults.
     var options = this.options({
       punctuation: '.',
@@ -22,19 +22,23 @@ module.exports = function(grunt) {
 
     var re = /{{include:([^}]*)}}/ig;
 
-    var getCookedFile = function(path){
+    var getCookedFile = function(path, parent){
+      parent = parent || '';
       // Check if file exists
       if (!grunt.file.exists(path)) {
         grunt.log.warn('File "' + path + '" not found.');
         return;
       }
-      var fileContents = grunt.file.read(path);
+      var fileContents = grunt.file.read(parent + path);
       var cookedContents = fileContents;
+      // Find the path of the current dirrectory
+      var parentDir = path.substring(0, Math.max(path.lastIndexOf("/"), path.lastIndexOf("\\\\"))+1);
+      console.log('parentDir: ', parentDir);
       // Match
       var match;
       while(match = re.exec(cookedContents)){
         var matchedPath = match[1];
-        var cookedFile = getCookedFile(matchedPath) || '';
+        var cookedFile = getCookedFile(parentDir + matchedPath) || '';
         cookedContents = cookedContents.replace(match[0], cookedFile);
       }
       return cookedContents;

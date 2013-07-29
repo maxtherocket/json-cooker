@@ -1,7 +1,7 @@
 {
   "name": "json-cooker",
   "description": "Include JSON files into another JSON file.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://github.com/maxtherocket/json-cooker",
   "author": {
     "name": "Max Rusan",
