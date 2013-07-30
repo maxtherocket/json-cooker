@@ -10,16 +10,12 @@
 
 module.exports = function(grunt) {
 
-  // Please see the Grunt documentation for more information regarding task
-  // creation: http://gruntjs.com/creating-tasks
-
   grunt.registerMultiTask('cook', 'Cooking', function() {
     // Merge task-specific and/or target-specific options with these defaults.
     var options = this.options({
-      punctuation: '.',
-      separator: ', '
     });
 
+    // Regex for matching includes
     var re = /{{include:([^}]*)}}/ig;
 
     var getCookedFile = function(path, parent){
@@ -33,7 +29,6 @@ module.exports = function(grunt) {
       var cookedContents = fileContents;
       // Find the path of the current dirrectory
       var parentDir = path.substring(0, Math.max(path.lastIndexOf("/"), path.lastIndexOf("\\\\"))+1);
-      console.log('parentDir: ', parentDir);
       // Match
       var match;
       while(match = re.exec(cookedContents)){
@@ -55,7 +50,7 @@ module.exports = function(grunt) {
       var src = getCookedFile(srcPath);
 
       // Print a success message.
-      grunt.log.writeln('File "' + f.dest + '" created.');
+      grunt.log.writeln('Ding! "' + f.dest + '" is ready.');
 
       // Write the destination file.
       grunt.file.write(f.dest, src);

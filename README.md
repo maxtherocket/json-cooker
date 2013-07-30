@@ -17,19 +17,21 @@ Once the plugin has been installed, it may be enabled inside your Gruntfile with
 grunt.loadNpmTasks('json-cooker');
 ```
 
-## The "json_cooker" task
+## The "cook" task
 
 ### Overview
-In your project's Gruntfile, add a section named `json_cooker` to the data object passed into `grunt.initConfig()`.
+In your project's Gruntfile, add a section named `cook` to the data object passed into `grunt.initConfig()`.
 
 ```js
 grunt.initConfig({
-  json_cooker: {
+  cook: {
     options: {
-      // Task-specific options go here.
+      // No options yet
     },
     your_target: {
-      // Target-specific file lists and/or options go here.
+      files: {
+        "output.json":"src.raw.json"
+      }
     },
   },
 })

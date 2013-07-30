@@ -34,18 +34,9 @@ module.exports = function(grunt) {
         options: {
         },
         files: {
-          'tmp/json.json': 'test/fixtures/json.raw',
+          'tmp/meal.json': 'test/fixtures/meal.raw.json',
         },
-      },
-      custom_options: {
-        options: {
-          separator: ': ',
-          punctuation: ' !!!',
-        },
-        files: {
-          'tmp/custom_options': ['test/fixtures/testing', 'test/fixtures/123'],
-        },
-      },
+      }
     },
 
     // Unit tests.
